@@ -1,0 +1,106 @@
+<link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="../iron-flex-layout/iron-flex-layout.html">
+
+<!--
+`super-hover`
+Custom element w/ hover-effects
+
+@demo demo/index.html
+-->
+
+<dom-module id="super-hover">
+  <template>
+
+    <!--
+     ██████ ███████ ███████
+    ██      ██      ██
+    ██      ███████ ███████
+    ██           ██      ██
+     ██████ ███████ ███████
+    -->
+
+    <style is="custom-style">
+      :host {
+        display: block;
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      :host * { box-sizing: content-box; margin: 0; padding: 0; }
+
+      a { text-decoration: none; }
+
+      /* Image Outter */
+      .img-outter                                   { overflow: hidden; text-align: center; }
+
+      /* Image Link */
+      .img-inner                                    { overflow: visible; position: relative; display: inline-block; margin: 2rem 1.2rem; border-radius: 100%; transition: transform .22s ease-in-out; background: rgba(0,0,0, .64); border: 6px solid rgba(0,0,0, 1); }
+      .img-inner ::content > .hover-fx              { width: 160px; height: 160px; width: var(--super-hover-size); height: var(--super-hover-size); overflow: hidden; -webkit-filter: grayscale(1); filter: grayscale(1); transition: all .22s ease-in-out; display: block; position: relative; border-radius: 100%; }
+      .img-inner:before,
+      .img-inner:after { content: ""; display: block; position: absolute; border-radius: 100%; transition: all .22s ease-in-out;
+                        border:    12px solid transparent;
+                        top:      -12px;
+                        left:     -12px;
+                        right:    -12px;
+                        bottom:   -12px;
+      }
+
+      .img-inner:before                                            { opacity: .25; border-top: 12px solid #fff;     border-left: 12px solid #fff;  }
+      .img-inner:after                                             { opacity:  .5; border-bottom: 12px solid #fff;  border-right: 12px solid #fff; }
+
+
+      /* Hover States */
+      .img-outter:hover .img-inner ::content > .hover-fx           { opacity: 1; -webkit-filter: grayscale(0); filter: grayscale(0); }
+      /*.img-outter:hover .img-inner ::content > .hover-fx           { opacity: 1; -webkit-filter: grayscale(0); filter: grayscale(0); transform: scale(1.07, 1.07) translate(0, 0); }*/
+      .img-outter:hover .img-inner:before                          { transform: rotate(180deg); border-color: red; border-color: var(--super-hover-border); opacity: .5; background: rgba(256,0,0, .11); background:  var(--super-hover-bg); }
+      .img-outter:hover .img-inner:after                           { transform: rotate(180deg); opacity: .25; }
+
+
+    </style>
+
+
+
+
+    <!--
+    ██   ██ ████████ ███    ███ ██
+    ██   ██    ██    ████  ████ ██
+    ███████    ██    ██ ████ ██ ██
+    ██   ██    ██    ██  ██  ██ ██
+    ██   ██    ██    ██      ██ ███████
+    -->
+
+      <div class="img-outter">
+        <div class="img-inner">
+            <content select=".hover-fx"></content>
+        </div>
+      </div>
+
+  </template>
+
+
+
+
+  <!--
+       ██ ███████
+       ██ ██
+       ██ ███████
+  ██   ██      ██
+   █████  ███████
+  -->
+
+  <script>
+    Polymer({
+
+      is: 'super-hover',
+
+      properties: {
+        prop1: {
+          type: String,
+          value: 'super-hover',
+        },
+      },
+
+    });
+  </script>
+</dom-module>

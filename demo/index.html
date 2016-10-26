@@ -1,0 +1,39 @@
+<!doctype html>
+<html>
+  <head>
+    <title>super-hover demo</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1, user-scalable=yes">
+    <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
+
+    <link rel="import" href="../../iron-demo-helpers/demo-pages-shared-styles.html">
+    <link rel="import" href="../../iron-demo-helpers/demo-snippet.html">
+    <link rel="import" href="../../iron-image/iron-image.html">
+
+    <link rel="import" href="../super-hover.html">
+
+    <style is="custom-style" include="demo-pages-shared-styles">
+      super-hover { width: 100%;
+      }
+
+      .pattern { background: url(../images/bg-pattern.jpg) repeat; }
+
+    </style>
+  </head>
+  <body>
+
+    <div class="vertical-section-container centered">
+      <h3>Super-Hover Demo</h3>
+      <demo-snippet>
+        <template>
+          <div class="pattern">
+            <super-hover>
+              <iron-image sizing="cover" src="../images/bg-robot.jpg" alt="Super Robot" class="hover-fx"></iron-image>
+            </super-hover>
+          </div>
+        </template>
+      </demo-snippet>
+    </div>
+
+  </body>
+</html>

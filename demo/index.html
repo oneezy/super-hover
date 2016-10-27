@@ -15,20 +15,15 @@
     <link rel="import" href="../super-hover.html">
 
     <style is="custom-style" include="demo-pages-shared-styles super-hover">
-      /*div {
-        @apply(--layout-horizontal);
-        @apply(--layout-center-center);
-
-        background: url(../images/bg-pattern.jpg) repeat;
-      }*/
       super-hover {
 
         width: 200px;
         height: 200px;
         margin: 0 auto;
+        overflow: hidden;
 
         /* Universal */
-        --border-radius: 						        { 100%; };
+        --border-radius: 						        { 50%; };
         --text-color: 					  		      { black; };
         --color-white: 				  		        { white; };
         --color-black: 		  		  		      { black; };
@@ -48,6 +43,14 @@
         --monochrome-border-color-bot: 	    { white; };
       }
 
+      iron-image { width: 100%; height: 100%; border-radius: 100%; }
+
+      .pattern {
+        background: url(http://doc.x3dom.org/tutorials/basics/htmlCSS/pattern.png);
+        width: 100%;
+        height: 100%;
+        padding: 2rem 0;
+      }
     </style>
   </head>
   <body>
@@ -57,7 +60,11 @@
       <demo-snippet>
         <template>
 
-            <super-hover></super-hover>
+        <div class="pattern">
+            <super-hover>
+              <iron-image sizing="cover" src="../images/bg-robot.jpg"></iron-image>
+            </super-hover>
+        </div>
 
         </template>
       </demo-snippet>

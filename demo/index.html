@@ -6,20 +6,47 @@
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1, user-scalable=yes">
     <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
 
+
+    <link rel="import" href="../../iron-flex-layout/iron-flex-layout.html">
     <link rel="import" href="../../iron-demo-helpers/demo-pages-shared-styles.html">
     <link rel="import" href="../../iron-demo-helpers/demo-snippet.html">
     <link rel="import" href="../../iron-image/iron-image.html">
 
     <link rel="import" href="../super-hover.html">
 
-    <style is="custom-style" include="demo-pages-shared-styles">
-      super-hover { width: 100%;
+    <style is="custom-style" include="demo-pages-shared-styles super-hover">
+      /*div {
+        @apply(--layout-horizontal);
+        @apply(--layout-center-center);
 
-        --super-hover-size: { 200px; };
-        --super-hover-border: { yellow; };
+        background: url(../images/bg-pattern.jpg) repeat;
+      }*/
+      super-hover {
+
+        width: 200px;
+        height: 200px;
+        margin: 0 auto;
+
+        /* Universal */
+        --border-radius: 						        { 100%; };
+        --text-color: 					  		      { black; };
+        --color-white: 				  		        { white; };
+        --color-black: 		  		  		      { black; };
+
+        /* Color */
+        --color-bg: 							          { skyblue; };
+        --color-border-color: 				      { skyblue; };
+        --color-bg-opacity: 					      { .32; };
+        --color-border-size: 				        { 14px; };
+
+        /* Monochrome */
+        --monochrome-bg: 						        { black; };
+        --monochrome-bg-opacity: 			      { .78; };
+        --monochrome-border-size: 			    { 24px; };
+        --monochrome-border-opacity: 		    { .32; };
+        --monochrome-border-color-top: 	    { black; };
+        --monochrome-border-color-bot: 	    { white; };
       }
-
-      .pattern { background: url(../images/bg-pattern.jpg) repeat; }
 
     </style>
   </head>
@@ -29,11 +56,9 @@
       <h3>Super-Hover Demo</h3>
       <demo-snippet>
         <template>
-          <div class="pattern">
-            <super-hover>
-              <iron-image sizing="cover" src="../images/bg-robot.jpg" alt="Super Robot" class="hover-fx"></iron-image>
-            </super-hover>
-          </div>
+
+            <super-hover></super-hover>
+
         </template>
       </demo-snippet>
     </div>

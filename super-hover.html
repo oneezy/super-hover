@@ -22,31 +22,50 @@ Custom element w/ hover-effects
 <style is="custom-style">
   :root {
 
-    /* Universal */
+    /* UNIVERSAL
+    ***************************************************/
     --border-radius: 						        100%;
     --text-color: 					  		      black;
     --color-white: 				  		        white;
     --color-black: 		  		  		      black;
+    --rotate-0:                         rotate(0deg);
+    --rotate-90:                        rotate(90deg);
+    --rotate-180:                       rotate(180deg);
+    --rotate-270:                       rotate(270deg);
+    --rotate-360:                       rotate(360deg);
 
-    /* Color */
-    --color-bg: 							          black;
-    --color-bg-opacity: 					      .32;
-    --color-border-color: 				      white;
-    --color-border-size: 				        8px;
 
-    /* Color Hover */
-    --color-hover-bg: 							    red;
-    --color-hover-bg-opacity: 					.32;
-    --color-hover-border-color: 			  red;
-    --color-hover-border-size: 				  8px;
+    /* SUPER HOVER
+    ***************************************************/
+    /* Outter */
+    --outter-bg: 							          black;
+    --outter-bg-opacity: 					      .32;
+    --outter-border-color: 				      white;
+    --outter-border-opacity: 				    .32;
+    --outter-border-size: 				      6px;
 
-    /* Monochrome */
-    --monochrome-bg: 						        black;
-    --monochrome-bg-opacity: 			      .78;
-    --monochrome-border-size: 			    12px;
-    --monochrome-border-opacity: 		    .32;
-    --monochrome-border-color-top: 	    black;
-    --monochrome-border-color-bot: 	    silver;
+    /* Outter Hover */
+    --outter-hover-bg: 							    red;
+    --outter-hover-bg-opacity: 					.32;
+    --outter-hover-border-color: 			  red;
+    --outter-hover-border-opacity: 			1;
+    --outter-hover-border-size: 				6px;
+
+    /* Inner */
+    --inner-bg: 						            black;
+    --inner-bg-opacity: 			          .78;
+    --inner-border-size: 			          calc(var(--outter-border-size) + var(--outter-border-size));
+    --inner-border-opacity: 		        .32;
+    --inner-border-color-top: 	        black;
+    --inner-border-color-bottom: 	      silver;
+
+    /* Inner Hover */
+    --inner-hover-bg: 						      black;
+    --inner-hover-bg-opacity: 			    .78;
+    --inner-hover-border-size: 			    calc(var(--outter-hover-border-size) + var(--outter-hover-border-size));
+    --inner-hover-border-opacity: 		  .32;
+    --inner-hover-border-color-top: 	  black;
+    --inner-hover-border-color-bottom: 	white;
 
   }
 
@@ -59,12 +78,13 @@ Custom element w/ hover-effects
     color: var(--text-color);
   }
 
-
   :host * {
     border-radius: var(--border-radius);
     box-sizing: border-box;
     transition: transform .22s ease-in-out;
   }
+
+  :host *:hover { transition: transform .22s, opacity .22s ease-in-out; }
 
 
   ::content {
@@ -73,8 +93,8 @@ Custom element w/ hover-effects
     border-radius: var(--border-radius);
     box-sizing: border-box;
     overflow: hidden;
-    width: calc(100% - (var(--monochrome-border-size) + var(--monochrome-border-size)));
-    height: calc(100% - (var(--monochrome-border-size) + var(--monochrome-border-size)));
+    width: calc(100% - (var(--inner-border-size) + var(--inner-border-size)));
+    height: calc(100% - (var(--inner-border-size) + var(--inner-border-size)));
   }
 
 
@@ -89,55 +109,58 @@ Custom element w/ hover-effects
 
 
   /* shared styles */
-  .color-bg,
-  .color-border,
-  .monochrome-bg,
-  .monochrome-border,
+  .outter-bg,
+  .outter-border,
+  .inner-bg,
+  .inner-border,
   .content-wrapper  {
     @apply(--layout-fit);
     width: 100%;
     height: 100%;
+    will-change: transform, opacity;
+    z-index: 1;
   }
 
 
 
   /* color (color) */
-  .color-bg {
-    background: var(--color-bg);
-    opacity: var(--color-bg-opacity);
-    width: calc(100% - var(--monochrome-border-size));
-    height: calc(100% - var(--monochrome-border-size));
-    top: var(--color-border-size);
-    left: var(--color-border-size);
+  .outter-bg {
+    background: var(--outter-bg);
+    opacity: var(--outter-bg-opacity);
+    width: calc(100% - var(--inner-border-size));
+    height: calc(100% - var(--inner-border-size));
+    top: var(--outter-border-size);
+    left: var(--outter-border-size);
   }
 
 
-  .color-border {
-    border: var(--color-border-color) solid var(--color-border-size);
+  .outter-border {
+    border: var(--outter-border-color) solid var(--outter-border-size);
+    opacity: var(--outter-border-opacity);
   }
 
 
-  /* monochrome */
-  .monochrome-bg {
+  /* inner */
+  .inner-bg {
     background: black;
-    opacity: var(--monochrome-bg-opacity);
-    width: calc(100% - (var(--monochrome-border-size) + var(--monochrome-border-size)));
-    height: calc(100% - (var(--monochrome-border-size) + var(--monochrome-border-size)));
-    top: var(--monochrome-border-size);
-    left: var(--monochrome-border-size);
+    opacity: var(--inner-bg-opacity);
+    width: calc(100% - (var(--inner-border-size) + var(--inner-border-size)));
+    height: calc(100% - (var(--inner-border-size) + var(--inner-border-size)));
+    top: var(--inner-border-size);
+    left: var(--inner-border-size);
   }
 
-  .monochrome-border {
-    opacity: var(--monochrome-border-opacity);
+  .inner-border {
+    opacity: var(--inner-border-opacity);
     transform: rotate(0);
 
     /* top border */
-    border-top: 	   var(--monochrome-border-size) solid var(--monochrome-border-color-top);
-    border-left:     var(--monochrome-border-size) solid var(--monochrome-border-color-top);
+    border-top: 	   var(--inner-border-size) solid var(--inner-border-color-top);
+    border-left:     var(--inner-border-size) solid var(--inner-border-color-top);
 
     /* bottom border */
-    border-bottom:   var(--monochrome-border-size) solid var(--monochrome-border-color-bot);
-    border-right:    var(--monochrome-border-size) solid var(--monochrome-border-color-bot);
+    border-bottom:   var(--inner-border-size) solid var(--inner-border-color-bottom);
+    border-right:    var(--inner-border-size) solid var(--inner-border-color-bottom);
   }
 
 
@@ -145,17 +168,38 @@ Custom element w/ hover-effects
     border-radius: var(--border-radius);
     box-sizing: border-box;
     overflow: hidden;
-    width: calc(100% - (var(--monochrome-border-size) + var(--monochrome-border-size)));
-    height: calc(100% - (var(--monochrome-border-size) + var(--monochrome-border-size)));
-    top: var(--monochrome-border-size);
-    left: var(--monochrome-border-size);
+    width: calc(100% - (var(--inner-border-size) + var(--inner-border-size)));
+    height: calc(100% - (var(--inner-border-size) + var(--inner-border-size)));
+    top: var(--inner-border-size);
+    left: var(--inner-border-size);
   }
 
 
 /* Hover States */
-.super-wrapper:hover .monochrome-border 		{ transform: rotate(180deg); }
-.super-wrapper:hover .color-bg 							{ background: var(--color-hover-bg); }
-.super-wrapper:hover .color-border 				  { border-color: var(--color-hover-border-color); }
+.super-wrapper:hover .inner-border {
+  transform: var(--rotate-180);
+  border-width: var(--inner-hover-border-size);
+  opacity: var(--inner-hover-border-opacity);
+  border-top-color: var(--inner-hover-border-color-top);
+  border-bottom-color: var(--inner-hover-border-color-bottom);
+}
+
+.super-wrapper:hover .inner-bg {
+  background: var(--inner-hover-bg);
+  opacity: var(--inner-hover-bg-opacity);
+}
+
+.super-wrapper:hover .outter-bg {
+  background: var(--outter-hover-bg);
+  opacity: var(--outter-hover-bg-opacity);
+}
+
+.super-wrapper:hover .outter-border {
+  border-color: var(--outter-hover-border-color);
+  background: var(--outter-hover-border-color);
+  opacity: var(--outter-hover-border-opacity);
+  border-width: var(--outter-hover-border-size);
+}
 
 
 </style>
@@ -174,12 +218,12 @@ Custom element w/ hover-effects
 <div class="super-wrapper">
 
   <!-- Color -->
-  <div class="color-bg"></div>
-  <div class="color-border"></div>
+  <div class="outter-bg"></div>
+  <div class="outter-border"></div>
 
   <!-- Black n' White -->
-  <div class="monochrome-bg"></div>
-  <div class="monochrome-border"></div>
+  <div class="inner-bg"></div>
+  <div class="inner-border"></div>
 
   <!-- Content -->
   <div class="content-wrapper">

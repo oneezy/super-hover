@@ -1,6 +1,7 @@
 <!doctype html>
 <html>
-  <head>
+
+<head>
     <title>super-hover demo</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1, user-scalable=yes">
@@ -15,51 +16,47 @@
     <link rel="import" href="../super-hover.html">
 
     <style is="custom-style" include="demo-pages-shared-styles super-hover">
-      super-hover {
-
-        width: 200px;
-        height: 200px;
-        margin: 0 auto;
-        overflow: hidden;
-
-        /* Universal */
-        --border-radius: 						        { 50%; };
-        --text-color: 					  		      { black; };
-        --color-white: 				  		        { white; };
-        --color-black: 		  		  		      { black; };
-
-        /* Color */
-        --color-bg: 							          { skyblue; };
-        --color-border-color: 				      { skyblue; };
-        --color-bg-opacity: 					      { .32; };
-        --color-border-size: 				        { 14px; };
-
-        /* Monochrome */
-        --monochrome-bg: 						        { black; };
-        --monochrome-bg-opacity: 			      { .78; };
-        --monochrome-border-size: 			    { 24px; };
-        --monochrome-border-opacity: 		    { .32; };
-        --monochrome-border-color-top: 	    { black; };
-        --monochrome-border-color-bot: 	    { white; };
-      }
-
-      iron-image { width: 100%; height: 100%; }
-
-      .pattern {
-        background: url(http://doc.x3dom.org/tutorials/basics/htmlCSS/pattern.png);
-        width: 100%;
-        height: 100%;
-        padding: 2rem 0;
-      }
-
+        super-hover {
+            width: 300px;
+            height: 300px;
+            margin: 0 auto;
+            overflow: hidden;
+        }
+        
+        iron-image {
+            max-width: 100%;
+        }
+        
+        .pattern {
+            background: url(http://doc.x3dom.org/tutorials/basics/htmlCSS/pattern.png);
+            width: 100%;
+            height: 100%;
+            padding: 2rem 0;
+        }
     </style>
-  </head>
-  <body>
+</head>
+
+<body>
 
     <div class="vertical-section-container centered">
-      <h3>Super-Hover Demo</h3>
-      <demo-snippet>
-        <template>
+        <h3>Super-Hover Demos</h3>
+        <demo-snippet>
+            <template>
+
+        <div class="pattern">
+            <super-hover>
+              <iron-image src="../images/logo-blue.png"></iron-image>
+            </super-hover>
+        </div>
+
+        </template>
+        </demo-snippet>
+    </div>
+
+    <div class="vertical-section-container centered">
+        <h3>Super-Hover Demos</h3>
+        <demo-snippet>
+            <template>
 
         <div class="pattern">
             <super-hover>
@@ -68,8 +65,24 @@
         </div>
 
         </template>
-      </demo-snippet>
+        </demo-snippet>
     </div>
 
-  </body>
+
+    <div class="vertical-section-container centered">
+        <h3>Super-Hover Demos</h3>
+        <demo-snippet>
+            <template>
+
+        <div class="pattern">
+            <super-hover>
+              <h1>SUPER HOVER</h1>
+            </super-hover>
+        </div>
+
+        </template>
+        </demo-snippet>
+    </div>
+</body>
+
 </html>

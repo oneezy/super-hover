@@ -9,7 +9,7 @@ Custom element w/ hover-effects
 -->
 
 <dom-module id="super-hover">
-  <template>
+    <template>
 
   <!--
    ██████ ███████ ███████
@@ -22,185 +22,190 @@ Custom element w/ hover-effects
 <style is="custom-style">
   :root {
 
-    /* UNIVERSAL
+    /* UNIVERSAL PROPERTIES
     ***************************************************/
     --border-radius: 						        100%;
-    --text-color: 					  		      black;
-    --color-white: 				  		        white;
-    --color-black: 		  		  		      black;
-    --rotate-0:                         rotate(0deg);
-    --rotate-90:                        rotate(90deg);
-    --rotate-180:                       rotate(180deg);
-    --rotate-270:                       rotate(270deg);
-    --rotate-360:                       rotate(360deg);
+    --text-color: 					  		      skyblue;
+    --rotate:                           rotate(180deg);
 
 
-    /* SUPER HOVER
+    /* ELEMENT PROPERTIES
     ***************************************************/
     /* Outter */
     --outter-bg: 							          black;
-    --outter-bg-opacity: 					      .32;
     --outter-border-color: 				      white;
+    --outter-bg-opacity: 					      .32;
     --outter-border-opacity: 				    .32;
-    --outter-border-size: 				      6px;
+    --outter-border-size: 				      8px;
 
     /* Outter Hover */
-    --outter-hover-bg: 							    red;
-    --outter-hover-bg-opacity: 					.32;
-    --outter-hover-border-color: 			  red;
-    --outter-hover-border-opacity: 			1;
-    --outter-hover-border-size: 				6px;
+    --outter-hover-bg: 			            skyblue;
+    --outter-hover-border-color: 				skyblue;
+    --outter-hover-bg-border-color: 		black;
+    --outter-hover-bg-opacity: 			    .42;
+    --outter-hover-border-opacity: 			.36;
+    --outter-hover-border-size: 				var(--outter-border-size);
 
     /* Inner */
     --inner-bg: 						            black;
-    --inner-bg-opacity: 			          .78;
-    --inner-border-size: 			          calc(var(--outter-border-size) + var(--outter-border-size));
+    --inner-bg-opacity: 			          .32;
     --inner-border-opacity: 		        .32;
     --inner-border-color-top: 	        black;
     --inner-border-color-bottom: 	      silver;
+    --inner-border-size: 			          calc(var(--outter-border-size) + var(--outter-border-size));
 
     /* Inner Hover */
     --inner-hover-bg: 						      black;
     --inner-hover-bg-opacity: 			    .78;
-    --inner-hover-border-size: 			    calc(var(--outter-hover-border-size) + var(--outter-hover-border-size));
-    --inner-hover-border-opacity: 		  .32;
+    --inner-hover-border-opacity: 		  .12;
     --inner-hover-border-color-top: 	  black;
     --inner-hover-border-color-bottom: 	white;
+    --inner-hover-border-size: 			    calc(var(--outter-hover-border-size) + var(--outter-hover-border-size));
 
   }
 
+
+  /* ELEMENT STYLES
+  ***************************************************/
   :host {
-    display: block;
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    border-radius: var(--border-radius);
-    color: var(--text-color);
+    display:                            block;
+    margin:                             0;
+    padding:                            0;
+    box-sizing:                         border-box;
+    border-radius:                      var(--border-radius);
+    color:                              var(--text-color);
   }
 
   :host * {
-    border-radius: var(--border-radius);
-    box-sizing: border-box;
-    transition: transform .22s ease-in-out;
-  }
-
-  :host *:hover { transition: transform .22s, opacity .22s ease-in-out; }
-
-
-  ::content {
-    @apply(--layout-horizontal);
-    @apply(--layout-center-center);
-    border-radius: var(--border-radius);
-    box-sizing: border-box;
-    overflow: hidden;
-    width: calc(100% - (var(--inner-border-size) + var(--inner-border-size)));
-    height: calc(100% - (var(--inner-border-size) + var(--inner-border-size)));
+    border-radius:                      var(--border-radius);
+    box-sizing:                         border-box;
   }
 
 
   .super-wrapper {
-    width: 100%;
-    height: 100%;
-    display: block;
-    position: relative;
-    overflow: hidden;
+    @apply(--layout-horizontal);
+    @apply(--layout-center-center);
+
+    width:                              100%;
+    height:                             100%;
+    display:                            block;
+    position:                           relative;
+    overflow:                           hidden;
   }
 
 
-
-  /* shared styles */
-  .outter-bg,
-  .outter-border,
-  .inner-bg,
-  .inner-border,
-  .content-wrapper  {
+  .outter-bg, .outter-border, .inner-bg, .inner-border  { 
     @apply(--layout-fit);
-    width: 100%;
-    height: 100%;
-    will-change: transform, opacity;
-    z-index: 1;
+    
+    width:                              100%;
+    height:                             100%;
+    z-index:                            0;
+    will-change:                        border-color, background, transform, opacity;
+    transition:                         background .22s ease-in-out, border-color .22s ease-in-out, transform .22s ease-in-out, opacity .22s ease-in-out;
+  }
+
+  .super-wrapper ::content {
+    @apply(--layout-horizontal);
+    @apply(--layout-center-center);
+
+    overflow:                           hidden;
+    width:                              calc(100% - (var(--inner-border-size) + var(--inner-border-size)));
+    height:                             calc(100% - (var(--inner-border-size) + var(--inner-border-size)));
+    border-radius:                      var(--border-radius);
   }
 
 
-
-  /* color (color) */
-  .outter-bg {
-    background: var(--outter-bg);
-    opacity: var(--outter-bg-opacity);
-    width: calc(100% - var(--inner-border-size));
-    height: calc(100% - var(--inner-border-size));
-    top: var(--outter-border-size);
-    left: var(--outter-border-size);
+  /* Outter BG 
+  *******************************************************************************************************************/
+  .super-wrapper .outter-bg {
+    width:                              calc(100% - var(--inner-border-size));
+    height:                             calc(100% - var(--inner-border-size));
+    background:                         var(--outter-bg);
+    opacity:                            var(--outter-bg-opacity);
+    top:                                var(--outter-border-size);
+    left:                               var(--outter-border-size);
   }
 
-
-  .outter-border {
-    border: var(--outter-border-color) solid var(--outter-border-size);
-    opacity: var(--outter-border-opacity);
+  .super-wrapper:hover .outter-bg {
+    background:                         var(--outter-hover-bg);
+    opacity:                            var(--outter-hover-bg-opacity);
   }
 
-
-  /* inner */
-  .inner-bg {
-    background: black;
-    opacity: var(--inner-bg-opacity);
-    width: calc(100% - (var(--inner-border-size) + var(--inner-border-size)));
-    height: calc(100% - (var(--inner-border-size) + var(--inner-border-size)));
-    top: var(--inner-border-size);
-    left: var(--inner-border-size);
+  /* Outter Border 
+  *******************************************************************************************************************/
+  .super-wrapper .outter-border {
+    border:                             var(--outter-border-color) solid var(--outter-border-size);
+    opacity:                            var(--outter-border-opacity);
   }
 
-  .inner-border {
-    opacity: var(--inner-border-opacity);
-    transform: rotate(0);
+  .super-wrapper:hover .outter-border {
+    background:                         var(--outter-hover-bg-border-color);
+    border-color:                       var(--outter-hover-border-color);
+    opacity:                            var(--outter-hover-border-opacity);
+    border-width:                       var(--outter-hover-border-size);
+  }
+
+  /* Inner BG 
+  *******************************************************************************************************************/
+  .super-wrapper .inner-bg {
+    width:                              calc(100% - (var(--inner-border-size) + var(--inner-border-size)));
+    height:                             calc(100% - (var(--inner-border-size) + var(--inner-border-size)));
+    background:                         var(--inner-bg);
+    opacity:                            var(--inner-bg-opacity);
+    top:                                var(--inner-border-size);
+    left:                               var(--inner-border-size);
+  }
+
+  .super-wrapper:hover .inner-bg {
+    background:                         var(--inner-hover-bg);
+    opacity:                            var(--inner-hover-bg-opacity);
+  }
+
+  /* Inner Border 
+  *******************************************************************************************************************/
+  .super-wrapper .inner-border {
+    opacity:                            var(--inner-border-opacity);
 
     /* top border */
-    border-top: 	   var(--inner-border-size) solid var(--inner-border-color-top);
-    border-left:     var(--inner-border-size) solid var(--inner-border-color-top);
+    border-top: 	                      var(--inner-border-size) solid var(--inner-border-color-top);
+    border-left:                        var(--inner-border-size) solid var(--inner-border-color-top);
 
     /* bottom border */
-    border-bottom:   var(--inner-border-size) solid var(--inner-border-color-bottom);
-    border-right:    var(--inner-border-size) solid var(--inner-border-color-bottom);
+    border-bottom:                      var(--inner-border-size) solid var(--inner-border-color-bottom);
+    border-right:                       var(--inner-border-size) solid var(--inner-border-color-bottom);
+  }
+
+  .super-wrapper:hover .inner-border {
+    transform:                          var(--rotate);
+    opacity:                            var(--inner-hover-border-opacity);
+
+    /* top border */
+    border-top: 	                      var(--inner-hover-border-size) solid var(--inner-hover-border-color-top);
+    border-left:                        var(--inner-hover-border-size) solid var(--inner-hover-border-color-top);
+
+    /* bottom border */
+    border-bottom:                      var(--inner-hover-border-size) solid var(--inner-hover-border-color-bottom);
+    border-right:                       var(--inner-hover-border-size) solid var(--inner-hover-border-color-bottom);
   }
 
 
-  .content-wrapper {
-    border-radius: var(--border-radius);
-    box-sizing: border-box;
-    overflow: hidden;
-    width: calc(100% - (var(--inner-border-size) + var(--inner-border-size)));
-    height: calc(100% - (var(--inner-border-size) + var(--inner-border-size)));
-    top: var(--inner-border-size);
-    left: var(--inner-border-size);
+  /* Content Wraper
+  *******************************************************************************************************************/
+  .super-wrapper .content-wrapper {
+    @apply(--layout-horizontal);
+    @apply(--layout-center-center);
+    
+    position:                           relative;
+    overflow:                           hidden;
+    width:                              calc(100% - (var(--inner-border-size) + var(--inner-border-size)));
+    height:                             calc(100% - (var(--inner-border-size) + var(--inner-border-size)));
+    transition:                         transform .22s ease-in-out, opacity .22s ease-in-out;
   }
 
+  .super-wrapper:hover .content-wrapper ::content  { 
+    transform:                          scale(2, 2);
 
-/* Hover States */
-.super-wrapper:hover .inner-border {
-  transform: var(--rotate-180);
-  border-width: var(--inner-hover-border-size);
-  opacity: var(--inner-hover-border-opacity);
-  border-top-color: var(--inner-hover-border-color-top);
-  border-bottom-color: var(--inner-hover-border-color-bottom);
-}
-
-.super-wrapper:hover .inner-bg {
-  background: var(--inner-hover-bg);
-  opacity: var(--inner-hover-bg-opacity);
-}
-
-.super-wrapper:hover .outter-bg {
-  background: var(--outter-hover-bg);
-  opacity: var(--outter-hover-bg-opacity);
-}
-
-.super-wrapper:hover .outter-border {
-  border-color: var(--outter-hover-border-color);
-  background: var(--outter-hover-border-color);
-  opacity: var(--outter-hover-border-opacity);
-  border-width: var(--outter-hover-border-size);
-}
-
+  }
 
 </style>
 
@@ -215,28 +220,29 @@ Custom element w/ hover-effects
   ██   ██    ██    ██      ██ ███████
   -->
 
-<div class="super-wrapper">
+  <div class="super-wrapper">
 
-  <!-- Color -->
-  <div class="outter-bg"></div>
-  <div class="outter-border"></div>
+      <!-- Outter -->
+      <div class="outter-bg"></div>
+      <div class="outter-border"></div>
 
-  <!-- Black n' White -->
-  <div class="inner-bg"></div>
-  <div class="inner-border"></div>
+      <!-- Inner -->
+      <div class="inner-bg"></div>
+      <div class="inner-border"></div>
 
-  <!-- Content -->
-  <div class="content-wrapper">
-    <content></content>
+      <!-- Content -->
+      <div class="content-wrapper">
+        <content></content>
+      </div>
+
   </div>
-</div>
 
 </template>
 
 
 
 
-  <!--
+    <!--
        ██ ███████
        ██ ██
        ██ ███████
@@ -244,18 +250,18 @@ Custom element w/ hover-effects
    █████  ███████
   -->
 
-  <script>
-      Polymer({
+    <script>
+        Polymer({
 
-          is: 'super-hover',
+            is: 'super-hover',
 
-          properties: {
-              prop1: {
-                  type: String,
-                  value: 'super-hover',
-              },
-          },
+            properties: {
+                prop1: {
+                    type: String,
+                    value: 'super-hover',
+                },
+            },
 
-      });
-  </script>
+        });
+    </script>
 </dom-module>

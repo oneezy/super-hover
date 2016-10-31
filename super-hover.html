@@ -20,65 +20,62 @@ Custom element w/ hover-effects
   -->
 
 <style is="custom-style">
-
-  :root {
-
-    /* UNIVERSAL PROPERTIES
-    ***************************************************/
-    --border-radius: 						        100%;
-    --primary-color:                    red;
-    --text-color: 					  		      red;
-    --rotate:                           rotate(180deg);
-
-
-    /* ELEMENT PROPERTIES
-    ***************************************************/
-    /* Outter */
-    --outter-bg: 							          black;
-    --outter-border-color: 				      white;
-    --outter-bg-opacity: 					      .32;
-    --outter-border-opacity: 				    .32;
-    --outter-border-size: 				      8px;
-
-    /* Outter Hover */
-    --outter-hover-bg: 			            red;
-    --outter-hover-border-color: 				red;
-    --outter-hover-bg-border-color: 		black;
-    --outter-hover-bg-opacity: 			    .42;
-    --outter-hover-border-opacity: 			.36;
-    --outter-hover-border-size: 				var(--outter-border-size);
-
-    /* Inner */
-    --inner-bg: 						            black;
-    --inner-bg-opacity: 			          .32;
-    --inner-border-opacity: 		        .32;
-    --inner-border-color-top: 	        black;
-    --inner-border-color-bottom: 	      silver;
-    --inner-border-size: 			          calc(var(--outter-border-size) + var(--outter-border-size));
-
-    /* Inner Hover */
-    --inner-hover-bg: 						      black;
-    --inner-hover-bg-opacity: 			    .32;
-    --inner-hover-border-opacity: 		  .12;
-    --inner-hover-border-color-top: 	  black;
-    --inner-hover-border-color-bottom: 	white;
-    --inner-hover-border-size: 			    calc(var(--outter-hover-border-size) + var(--outter-hover-border-size));
-
-
-
-
-  }
-
-
-  /* ELEMENT STYLES
-  ***************************************************/
   :host {
+
+  /* UNIVERSAL PROPERTIES
+  ******************************************************************************************************************************/
+  --border-radius: 						        100%;
+  --primary-text-color:               white;
+  --rotate:                           180;
+  --zoom:                             2;
+  --size:                             100;
+
+
+  /* ELEMENT PROPERTIES
+  ******************************************************************************************************************************/
+  /* Outter */
+  --outter-bg:                        black;
+  --outter-border-color: 				      white;
+  --outter-bg-opacity:                .32;
+  --outter-border-opacity: 				    .32;
+  --outter-border-size: 				      8px;
+
+  /* Outter Hover */
+  --outter-hover-bg: 			            red;
+  --outter-hover-border-color: 				red;
+  --outter-hover-bg-border-color: 		black;
+  --outter-hover-bg-opacity: 			    .42;
+  --outter-hover-border-opacity: 			.36;
+  --outter-hover-border-size: 				var(--outter-border-size);
+
+  /* Inner */
+  --inner-bg: 						            black;
+  --inner-bg-opacity: 			          .32;
+  --inner-border-opacity: 		        .32;
+  --inner-border-color-top: 	        black;
+  --inner-border-color-bottom: 	      silver;
+  --inner-border-size: 			          calc(var(--outter-border-size) + var(--outter-border-size));
+
+  /* Inner Hover */
+  --inner-hover-bg: 						      black;
+  --inner-hover-bg-opacity: 			    .32;
+  --inner-hover-border-opacity: 		  .12;
+  --inner-hover-border-color-top: 	  black;
+  --inner-hover-border-color-bottom: 	white;
+  --inner-hover-border-size: 			    calc(var(--outter-hover-border-size) + var(--outter-hover-border-size));
+
+
+
+  /* Super Hover
+  ******************************************************************************************************************************/
     display:                            inline-block;
     margin:                             0;
     padding:                            0;
     box-sizing:                         border-box;
-    border-radius:                      var(--border-radius, 100%);
-    color:                              var(--brand-color, white);
+    border-radius:                      var(--border-radius);
+    color:                              var(--primary-text-color);
+    width:                              var(--size)px;
+    height:                             var(--size)px;
   }
 
   :host * {
@@ -147,7 +144,7 @@ Custom element w/ hover-effects
 
   .super-wrapper:hover .outter-border {
     background:                         var(--outter-hover-bg-border-color);
-    border-color:                       var(--outter-hover-border-color);
+    border-color:                       var(--outter-hover-border-color, lime);
     opacity:                            var(--outter-hover-border-opacity);
     border-width:                       var(--outter-hover-border-size);
     @apply(--super-hover-outter-border-hover);
@@ -184,7 +181,7 @@ Custom element w/ hover-effects
   }
 
   .super-wrapper:hover .inner-border {
-    transform:                          var(--rotate);
+    transform:                          rotate(var(--rotate)deg);
     opacity:                            var(--inner-hover-border-opacity);
 
     /* top border */
@@ -227,7 +224,7 @@ Custom element w/ hover-effects
   }
 
   .super-wrapper:hover .content-wrapper ::content > *  { 
-    transform:                          scale(3, 3);
+    transform:                          scale(var(--zoom), var(--zoom));
   }
 
 </style>

@@ -29,6 +29,8 @@ Custom element w/ hover-effects
   --rotate:                           180;
   --zoom:                             2;
   --size:                             100;
+  --border-outter:                    8;
+  --border-inner:                     16;
 
 
   /* ELEMENT PROPERTIES
@@ -38,7 +40,7 @@ Custom element w/ hover-effects
   --outter-border-color: 				      white;
   --outter-bg-opacity:                .32;
   --outter-border-opacity: 				    .32;
-  --outter-border-size: 				      8px;
+  --outter-border-size: 				      var(--border-outter)px;
 
   /* Outter Hover */
   --outter-hover-bg: 			            red;
@@ -46,7 +48,7 @@ Custom element w/ hover-effects
   --outter-hover-bg-border-color: 		black;
   --outter-hover-bg-opacity: 			    .42;
   --outter-hover-border-opacity: 			.36;
-  --outter-hover-border-size: 				var(--outter-border-size);
+  --outter-hover-border-size: 				var(--border-outter)px;
 
   /* Inner */
   --inner-bg: 						            black;
@@ -54,7 +56,7 @@ Custom element w/ hover-effects
   --inner-border-opacity: 		        .32;
   --inner-border-color-top: 	        black;
   --inner-border-color-bottom: 	      silver;
-  --inner-border-size: 			          calc(var(--outter-border-size) + var(--outter-border-size));
+  --inner-border-size: 			          var(--border-inner)px;
 
   /* Inner Hover */
   --inner-hover-bg: 						      black;
@@ -62,7 +64,7 @@ Custom element w/ hover-effects
   --inner-hover-border-opacity: 		  .12;
   --inner-hover-border-color-top: 	  black;
   --inner-hover-border-color-bottom: 	white;
-  --inner-hover-border-size: 			    calc(var(--outter-hover-border-size) + var(--outter-hover-border-size));
+  --inner-hover-border-size: 			    var(--border-inner)px;
 
 
 
@@ -131,7 +133,6 @@ Custom element w/ hover-effects
   .super-wrapper:hover .outter-bg {
     background:                         var(--outter-hover-bg);
     opacity:                            var(--outter-hover-bg-opacity);
-    @apply(--super-hover-outter-bg-hover);
   }
 
   /* Outter Border 
@@ -139,7 +140,6 @@ Custom element w/ hover-effects
   .super-wrapper .outter-border {
     border:                             var(--outter-border-color) solid var(--outter-border-size);
     opacity:                            var(--outter-border-opacity);
-    @apply(--super-hover-outter-border);
   }
 
   .super-wrapper:hover .outter-border {
@@ -147,18 +147,31 @@ Custom element w/ hover-effects
     border-color:                       var(--outter-hover-border-color, lime);
     opacity:                            var(--outter-hover-border-opacity);
     border-width:                       var(--outter-hover-border-size);
-    @apply(--super-hover-outter-border-hover);
   }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
   /* Inner BG 
   *******************************************************************************************************************/
   .super-wrapper .inner-bg {
-    width:                              calc(100% - (var(--inner-border-size) + var(--inner-border-size)));
-    height:                             calc(100% - (var(--inner-border-size) + var(--inner-border-size)));
+    width:                              calc(100% - (var(--outter-border-size) + var(--outter-border-size))); /* 16px */
+    height:                             calc(100% - (var(--outter-border-size) + var(--outter-border-size))); /* 16px */
     background:                         var(--inner-bg);
     opacity:                            var(--inner-bg-opacity);
-    top:                                var(--inner-border-size);
-    left:                               var(--inner-border-size);
+    top:                                var(--outter-border-size);
+    left:                               var(--outter-border-size); 
   }
 
   .super-wrapper:hover .inner-bg {
@@ -166,18 +179,21 @@ Custom element w/ hover-effects
     opacity:                            var(--inner-hover-bg-opacity);
   }
 
+
+
+
   /* Inner Border 
   *******************************************************************************************************************/
   .super-wrapper .inner-border {
     opacity:                            var(--inner-border-opacity);
 
     /* top border */
-    border-top: 	                      var(--inner-border-size) solid var(--inner-border-color-top);
-    border-left:                        var(--inner-border-size) solid var(--inner-border-color-top);
+    border-top: 	                      var(--inner-border-size) solid var(--inner-border-color-top);     /* 8px */
+    border-left:                        var(--inner-border-size) solid var(--inner-border-color-top);     /* 8px */
 
     /* bottom border */
-    border-bottom:                      var(--inner-border-size) solid var(--inner-border-color-bottom);
-    border-right:                       var(--inner-border-size) solid var(--inner-border-color-bottom);
+    border-bottom:                      var(--inner-border-size) solid var(--inner-border-color-bottom);  /* 8px */
+    border-right:                       var(--inner-border-size) solid var(--inner-border-color-bottom);  /* 8px */
   }
 
   .super-wrapper:hover .inner-border {
@@ -192,6 +208,20 @@ Custom element w/ hover-effects
     border-bottom:                      var(--inner-hover-border-size) solid var(--inner-hover-border-color-bottom);
     border-right:                       var(--inner-hover-border-size) solid var(--inner-hover-border-color-bottom);
   }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
   /* Content Wraper

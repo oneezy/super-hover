@@ -25,12 +25,14 @@ Custom element w/ hover-effects
   /* UNIVERSAL PROPERTIES
   ******************************************************************************************************************************/
   --border-radius: 						        100%;
-  --primary-text-color:               white;
+  --text-color:                       white;
   --rotate:                           180;
   --zoom:                             2;
-  --size:                             100;
+  --size:                             200;
   --border-outter:                    8;
   --border-inner:                     16;
+  --bg-color:                         red;
+  --border-color:                     red;
 
 
   /* ELEMENT PROPERTIES
@@ -43,8 +45,8 @@ Custom element w/ hover-effects
   --outter-border-size: 				      var(--border-outter)px;
 
   /* Outter Hover */
-  --outter-hover-bg: 			            red;
-  --outter-hover-border-color: 				red;
+  --outter-hover-bg: 			            var(--bg-color);
+  --outter-hover-border-color: 				var(--border-color);
   --outter-hover-bg-border-color: 		black;
   --outter-hover-bg-opacity: 			    .42;
   --outter-hover-border-opacity: 			.36;
@@ -75,7 +77,7 @@ Custom element w/ hover-effects
     padding:                            0;
     box-sizing:                         border-box;
     border-radius:                      var(--border-radius);
-    color:                              var(--primary-text-color);
+    color:                              var(--text-color);
     width:                              var(--size)px;
     height:                             var(--size)px;
   }

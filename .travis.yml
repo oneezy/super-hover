@@ -22,5 +22,5 @@ before_script:
 - export PATH=$PWD/node_modules/.bin:$PATH
 script:
   - xvfb-run wct
-  - bash ./gpages_build.sh oneezy super-hover travis justin@oneezy.com
+  - bash ./gpages_build.sh oneezy super-hover Justin justin@oneezy.com
 #  - "if [ \"${TRAVIS_PULL_REQUEST}\" = \"false\" ]; then wct -s 'default'; fi"

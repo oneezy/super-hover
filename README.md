@@ -1,4 +1,10 @@
-# \<super-hover\>
+_[Demo and API Docs](https://oneezy.github.io/super-hover)_
+
+# \<super-hover\> 
+
+[![Build Status](https://travis-ci.org/oneezy/super-hover.svg?branch=master)](https://travis-ci.org/oneezy/super-hover)
+[![license](https://img.shields.io/github/license/oneezy/super-hover.svg)]()
+[![Packagist](https://img.shields.io/packagist/v/oneezy/super-hover.svg)]()
 
 Custom element w/ hover-effects
 

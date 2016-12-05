@@ -1,0 +1,89 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>super-hover demo</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1, user-scalable=yes">
+    <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
+
+
+    <link rel="import" href="../../iron-flex-layout/iron-flex-layout.html">
+    <link rel="import" href="../../iron-demo-helpers/demo-pages-shared-styles.html">
+    <link rel="import" href="../../iron-demo-helpers/demo-snippet.html">
+    <link rel="import" href="../../iron-image/iron-image.html">
+
+    <link rel="import" href="../super-hover.html">
+
+    <style is="custom-style" include="demo-pages-shared-styles">
+        super-hover {
+            --zoom: 1.2;
+            --size: 250;
+            --rotate: 180;
+            --border-outter: 8;
+            --border-inner: 16;
+            --bg-color: red;
+            --border-color: red;
+            --text-color: white;
+        }
+        
+        .pattern {
+            @apply(--layout-horizontal);
+            @apply(--layout-center-center);
+            background: url(http://doc.x3dom.org/tutorials/basics/htmlCSS/pattern.png);
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="vertical-section-container centered">
+        <h3>Super-Hover Demos</h3>
+        <demo-snippet>
+            <template>
+
+                <div class="pattern">
+                    <super-hover>
+                    <iron-image src="../images/logo-blue.png"></iron-image>
+                    </super-hover>
+                </div>
+
+        </template>
+        </demo-snippet>
+    </div>
+
+    <div class="vertical-section-container centered">
+        <h3>Super-Hover Demos</h3>
+        <demo-snippet>
+            <template>
+
+                <div class="pattern">
+                    <super-hover>
+                    <iron-image sizing="cover" src="../images/bg-robot.jpg"></iron-image>
+                    </super-hover>
+                </div>
+
+        </template>
+        </demo-snippet>
+    </div>
+
+
+    <div class="vertical-section-container centered">
+        <h3>Super-Hover Demos</h3>
+        <demo-snippet>
+            <template>
+
+                <div class="pattern">
+                    <super-hover>
+                    <h1>SUPER HOVER</h1>
+                    </super-hover>
+                </div>
+
+        </template>
+        </demo-snippet>
+    </div>
+</body>
+
+</html>

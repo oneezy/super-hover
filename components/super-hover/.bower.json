@@ -1,0 +1,42 @@
+{
+  "name": "super-hover",
+  "description": "Custom element w/ super hover-effects",
+  "main": "super-hover.html",
+  "authors": [
+    "Justin O'Neill<justin@oneezy.com> (http://oneezy.com)"
+  ],
+  "license": "Apache 2.0",
+  "keywords": [
+    "polymer",
+    "web-component",
+    "web-components",
+    "component",
+    "hover"
+  ],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components"
+  ],
+  "dependencies": {
+    "polymer": "Polymer#^1.7.0",
+    "iron-image": "PolymerElements/iron-image#^1.2.5"
+  },
+  "devDependencies": {
+    "iron-component-page": "PolymerElements/iron-component-page#^1.0.0",
+    "iron-demo-helpers": "PolymerElements/iron-demo-helpers#^1.0.0",
+    "web-component-tester": "^4.0.0",
+    "webcomponentsjs": "webcomponents/webcomponentsjs#^0.7.0"
+  },
+  "homepage": "https://github.com/oneezy/super-hover",
+  "_release": "b2311a9b69",
+  "_resolution": {
+    "type": "branch",
+    "branch": "master",
+    "commit": "b2311a9b691824b7dc7cc53f6c7da69f76419121"
+  },
+  "_source": "https://github.com/oneezy/super-hover.git",
+  "_target": "master",
+  "_originalSource": "oneezy/super-hover",
+  "_direct": true
+}

@@ -1,0 +1,319 @@
+<link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="../iron-flex-layout/iron-flex-layout.html">
+<link rel="import" href="../iron-image/iron-image.html">
+<!--
+`super-hover`
+Custom element w/ hover-effects
+
+@demo demo/index.html
+-->
+
+<dom-module id="super-hover">
+    <template>
+
+  <!--
+   ██████ ███████ ███████
+  ██      ██      ██
+  ██      ███████ ███████
+  ██           ██      ██
+   ██████ ███████ ███████
+  -->
+
+<style is="custom-style">
+  :host {
+
+  /* UNIVERSAL PROPERTIES
+  ******************************************************************************************************************************/
+  --border-radius: 						        100%;
+  --text-color:                       white;
+  --rotate:                           180;
+  --zoom:                             2;
+  --size:                             200;
+  --border-outter:                    8;
+  --border-inner:                     16;
+  --bg-color:                         red;
+  --border-color:                     red;
+
+
+  /* ELEMENT PROPERTIES
+  ******************************************************************************************************************************/
+  /* Outter */
+  --outter-bg:                        black;
+  --outter-border-color: 				      white;
+  --outter-bg-opacity:                .32;
+  --outter-border-opacity: 				    .32;
+  --outter-border-size: 				      var(--border-outter)px;
+
+  /* Outter Hover */
+  --outter-hover-bg: 			            var(--bg-color);
+  --outter-hover-border-color: 				var(--border-color);
+  --outter-hover-bg-border-color: 		black;
+  --outter-hover-bg-opacity: 			    .42;
+  --outter-hover-border-opacity: 			.36;
+  --outter-hover-border-size: 				var(--border-outter)px;
+
+  /* Inner */
+  --inner-bg: 						            black;
+  --inner-bg-opacity: 			          .32;
+  --inner-border-opacity: 		        .32;
+  --inner-border-color-top: 	        black;
+  --inner-border-color-bottom: 	      silver;
+  --inner-border-size: 			          var(--border-inner)px;
+
+  /* Inner Hover */
+  --inner-hover-bg: 						      black;
+  --inner-hover-bg-opacity: 			    .32;
+  --inner-hover-border-opacity: 		  .12;
+  --inner-hover-border-color-top: 	  black;
+  --inner-hover-border-color-bottom: 	white;
+  --inner-hover-border-size: 			    var(--border-inner)px;
+
+
+
+  /* Super Hover
+  ******************************************************************************************************************************/
+    display:                            inline-block;
+    margin:                             0;
+    padding:                            0;
+    box-sizing:                         border-box;
+    border-radius:                      var(--border-radius);
+    color:                              var(--text-color);
+    width:                              var(--size)px;
+    height:                             var(--size)px;
+  }
+
+  :host * {
+    border-radius:                      var(--border-radius);
+    box-sizing:                         border-box;
+  }
+
+
+  .super-wrapper {
+    @apply(--layout-horizontal);
+    @apply(--layout-center-center);
+
+    width:                              100%;
+    height:                             100%;
+    display:                            block;
+    position:                           relative;
+    overflow:                           hidden;
+  }
+
+
+  .outter-bg, .outter-border, .inner-bg, .inner-border  { 
+    @apply(--layout-fit);
+    
+    width:                              100%;
+    height:                             100%;
+    z-index:                            0;
+    will-change:                        border-color, background, transform, opacity;
+    transition:                         background .22s ease-in-out, border-color .22s ease-in-out, transform .22s ease-in-out, opacity .22s ease-in-out;
+  }
+
+  .super-wrapper ::content {
+    @apply(--layout-horizontal);
+    @apply(--layout-center-center);
+
+    overflow:                           hidden;
+    width:                              100%;
+    height:                             100%;
+    border-radius:                      var(--border-radius);
+  }
+
+
+  /* Outter BG 
+  *******************************************************************************************************************/
+  .super-wrapper .outter-bg {
+    width:                              calc(100% - var(--inner-border-size));
+    height:                             calc(100% - var(--inner-border-size));
+    background:                         var(--outter-bg);
+    opacity:                            var(--outter-bg-opacity);
+    top:                                var(--outter-border-size);
+    left:                               var(--outter-border-size);
+  }
+
+  .super-wrapper:hover .outter-bg {
+    background:                         var(--outter-hover-bg);
+    opacity:                            var(--outter-hover-bg-opacity);
+  }
+
+  /* Outter Border 
+  *******************************************************************************************************************/
+  .super-wrapper .outter-border {
+    border:                             var(--outter-border-color) solid var(--outter-border-size);
+    opacity:                            var(--outter-border-opacity);
+  }
+
+  .super-wrapper:hover .outter-border {
+    background:                         var(--outter-hover-bg-border-color);
+    border-color:                       var(--outter-hover-border-color, lime);
+    opacity:                            var(--outter-hover-border-opacity);
+    border-width:                       var(--outter-hover-border-size);
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  /* Inner BG 
+  *******************************************************************************************************************/
+  .super-wrapper .inner-bg {
+    width:                              calc(100% - (var(--outter-border-size) + var(--outter-border-size))); /* 16px */
+    height:                             calc(100% - (var(--outter-border-size) + var(--outter-border-size))); /* 16px */
+    background:                         var(--inner-bg);
+    opacity:                            var(--inner-bg-opacity);
+    top:                                var(--outter-border-size);
+    left:                               var(--outter-border-size); 
+  }
+
+  .super-wrapper:hover .inner-bg {
+    background:                         var(--inner-hover-bg);
+    opacity:                            var(--inner-hover-bg-opacity);
+  }
+
+
+
+
+  /* Inner Border 
+  *******************************************************************************************************************/
+  .super-wrapper .inner-border {
+    opacity:                            var(--inner-border-opacity);
+
+    /* top border */
+    border-top: 	                      var(--inner-border-size) solid var(--inner-border-color-top);     /* 8px */
+    border-left:                        var(--inner-border-size) solid var(--inner-border-color-top);     /* 8px */
+
+    /* bottom border */
+    border-bottom:                      var(--inner-border-size) solid var(--inner-border-color-bottom);  /* 8px */
+    border-right:                       var(--inner-border-size) solid var(--inner-border-color-bottom);  /* 8px */
+  }
+
+  .super-wrapper:hover .inner-border {
+    transform:                          rotate(var(--rotate)deg);
+    opacity:                            var(--inner-hover-border-opacity);
+
+    /* top border */
+    border-top: 	                      var(--inner-hover-border-size) solid var(--inner-hover-border-color-top);
+    border-left:                        var(--inner-hover-border-size) solid var(--inner-hover-border-color-top);
+
+    /* bottom border */
+    border-bottom:                      var(--inner-hover-border-size) solid var(--inner-hover-border-color-bottom);
+    border-right:                       var(--inner-hover-border-size) solid var(--inner-hover-border-color-bottom);
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  /* Content Wraper
+  *******************************************************************************************************************/
+  .super-wrapper .content-wrapper {
+    @apply(--layout-horizontal);
+    @apply(--layout-center-center);
+    
+    position:                           relative;
+    z-index:                            1;
+    overflow:                           hidden;
+    width:                              calc(100% - (var(--inner-border-size) + var(--inner-border-size)));
+    height:                             calc(100% - (var(--inner-border-size) + var(--inner-border-size)));
+    transition:                         transform .22s ease-in-out, opacity .22s ease-in-out;
+  }
+
+  /* Content
+  *******************************************************************************************************************/
+  .super-wrapper .content-wrapper ::content > * {
+    display:                            inline-block;
+    position:                           relative;
+    max-width:                          100%;
+    max-height:                         100%;
+    transition:                         transform .22s ease-in-out, opacity .22s ease-in-out;
+  }
+
+  .super-wrapper .content-wrapper ::content > iron-image[sizing="cover"] {
+    width:                              100%;
+    height:                             100%;
+  }
+
+  .super-wrapper:hover .content-wrapper ::content > *  { 
+    transform:                          scale(var(--zoom), var(--zoom));
+  }
+
+</style>
+
+
+
+
+  <!--
+  ██   ██ ████████ ███    ███ ██
+  ██   ██    ██    ████  ████ ██
+  ███████    ██    ██ ████ ██ ██
+  ██   ██    ██    ██  ██  ██ ██
+  ██   ██    ██    ██      ██ ███████
+  -->
+
+  <div class="super-wrapper">
+
+      <!-- Outter -->
+      <div class="outter-bg"></div>
+      <div class="outter-border"></div>
+
+      <!-- Inner -->
+      <div class="inner-bg"></div>
+      <div class="inner-border"></div>
+
+      <!-- Content -->
+      <div class="content-wrapper">
+        <content></content>
+      </div>
+
+  </div>
+
+</template>
+
+
+
+
+    <!--
+       ██ ███████
+       ██ ██
+       ██ ███████
+  ██   ██      ██
+   █████  ███████
+  -->
+
+    <script>
+        Polymer({
+
+            is: 'super-hover',
+
+            properties: {
+                prop1: {
+                    type: String,
+                    value: 'super-hover',
+                },
+            },
+
+        });
+    </script>
+</dom-module>

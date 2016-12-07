@@ -1,32 +1,33 @@
 {
-    "name": "super-hover",
-    "description": "Custom element w/ super hover-effects",
-    "main": "super-hover.html",
-    "version": "0.1.0",
-    "authors": [
-        "Justin O'Neill<justin@oneezy.com> (http://oneezy.com)"
-    ],
-    "license": "Apache 2.0",
-    "keywords": [
-        "polymer",
-        "web-component",
-        "web-components",
-        "component",
-        "hover"
-    ],
-    "ignore": [
-        "**/.*",
-        "node_modules",
-        "bower_components"
-    ],
-    "dependencies": {
-        "polymer": "Polymer#^1.7.0",
-        "iron-image": "PolymerElements/iron-image#^1.2.5"
-    },
-    "devDependencies": {
-        "iron-component-page": "PolymerElements/iron-component-page#^1.0.0",
-        "iron-demo-helpers": "PolymerElements/iron-demo-helpers#^1.0.0",
-        "web-component-tester": "^4.0.0",
-        "webcomponentsjs": "webcomponents/webcomponentsjs#^0.7.0"
-    }
+  "name": "super-hover",
+  "description": "Custom element w/ super hover-effects",
+  "main": "super-hover.html",
+  "version": "0.1.1",
+  "authors": [
+    "Justin O'Neill<justin@oneezy.com> (http://oneezy.com)"
+  ],
+  "license": "Apache 2.0",
+  "keywords": [
+    "polymer",
+    "web-component",
+    "web-components",
+    "component",
+    "hover"
+  ],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components"
+  ],
+  "dependencies": {
+    "polymer": "Polymer#^1.7.0",
+    "iron-image": "PolymerElements/iron-image#^1.2.5",
+    "build-tools": "oneezy/build-tools#^0.0.2"
+  },
+  "devDependencies": {
+    "iron-component-page": "PolymerElements/iron-component-page#^1.0.0",
+    "iron-demo-helpers": "PolymerElements/iron-demo-helpers#^1.0.0",
+    "web-component-tester": "^4.0.0",
+    "webcomponentsjs": "webcomponents/webcomponentsjs#^0.7.0"
+  }
 }

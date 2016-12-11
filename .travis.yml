@@ -26,7 +26,7 @@ script:
 after_success: 
    '[ ${TRAVIS_PULL_REQUEST} = "false" ] && 
     [ ${TRAVIS_BRANCH} = "master" ] && 
-    bower install -s oneezy/build-tools && 
+    bower install oneezy/build-tools && 
     bower_components/build-tools/gpages_build.sh oneezy justinoneill2007+builds@gmail.com'
 
 

@@ -21,8 +21,7 @@
   ],
   "dependencies": {
     "polymer": "Polymer#^1.7.0",
-    "iron-image": "PolymerElements/iron-image#^1.2.5",
-    "build-tools": "oneezy/build-tools#^0.0.2"
+    "iron-image": "PolymerElements/iron-image#^1.2.5"
   },
   "devDependencies": {
     "iron-component-page": "PolymerElements/iron-component-page#^1.0.0",

@@ -27,7 +27,7 @@ after_success:
    '[ ${TRAVIS_PULL_REQUEST} = "false" ] && 
     [ ${TRAVIS_BRANCH} = "master" ] && 
     bower install oneezy/build-tools && 
-    chmod +x bower_components/build-tools/gpages_build.sh oneezy justinoneill2007+builds@gmail.com'
+    chmod +x gpages_build.sh'
 
 
 env:
